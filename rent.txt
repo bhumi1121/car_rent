@@ -1,0 +1,44 @@
+Name=VehicalRent
+about: The application mead for vehical rent if any people have no vhecle then
+easliy get rent.in this web application user can registration,login,logout,
+forgotpassword basic faciltyand manager side manager add vehicle and customer
+easily access vehicle,more facilty is vehicle rent for day and day wise charg 
+avaliable,customer have any query so customer send the query and manager solve
+and online pyment avaliable.
+------------------------------------------------------------------------
+Modual: User:Registarion,login,logout,ForgotPassword,cart,purchas
+------------------------------------------------------------------------
+System informaiton:
+frontend:HTML,CSS,JS
+backend:Python
+---------------------------------------------------------------------------
+Hardware configration:
+---------------------------------------------------------------------------
+DEVLOPER SIDE:
+
+Device name	DESKTOP-MOJUK10
+Processor	AMD A6-9225 RADEON R4, 5 COMPUTE CORES 2C+3G 2.60 GHz
+Installed RAM	4.00 GB (3.39 GB usable)
+System type	64-bit operating system, x64-based processor
+
+Edition	Windows 10 Home Single Language
+Version	22H2
+Installed on	‎28-‎03-‎2023
+OS build	19045.3448
+
+
+
+
+
+
+
+
+features: Admin penal
+	  SignUp[Manager and Customer]
+	  LogIn[Manager and Customer]
+	  ForgotPaasword?
+	  
+MnagerSide:AddVehical,Update,Delete,About
+CustomerSide:view,cart,delete to cart,purchas,inquiry,and pyment	
+	
+	
