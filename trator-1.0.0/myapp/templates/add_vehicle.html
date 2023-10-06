@@ -1,0 +1,67 @@
+{% extends 'manager_header.html' %}
+
+{% load static %}
+
+{% block content %}
+
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="contact_taital">Add Vehicle</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-12">
+                     {% if msg %}
+                        <p style="color: green;">{{msg}}</p>
+                     {% elif msg1 %}
+                        <p style="color: red;">{{msg1}}</p>
+                     {% else %}
+                        <p style="color:green;"></p>
+                     {% endif %}
+                     <div class="mail_section_1">
+                        <form action="{% url 'add_vehicle' %}" method="post" enctype="multipart/form-data">
+                           {% csrf_token %}
+                           <div class="form-group">
+                           <select  class='form-control' id='vehicle_type' name='vehicletype'>
+                              <option>---Select Vehicle Type---</option>
+                              <option value='sedan'>Sedan</option>
+                              <option value="hatchback">Hatchback</option>
+                              <option value="suv">SUV</option>
+                              <option value="muv">MUV</option>
+                              <option value="convertible">Convertible</option>
+                              <option value="sports">Sports</option>
+                              <option value="luxury">Luxury</option>
+                              <option value="van">Van</option>
+                           </select>
+                           </div>
+                        <input type="file" class="mail_text" name="c_image">
+                        <input type="text" class="mail_text" placeholder="Car Brand" name="c_brand">
+                        <input type="text" class="mail_text" placeholder="Car Name" name="c_name">
+                        <input type="text" class="mail_text" placeholder="Car Model" name="c_model">
+                        <input type="text" class="mail_text" placeholder="Car Fuel Type" name="c_fuel">
+                        <input type="number" class="mail_text" placeholder="Car Price Per Hour" name="c_price">
+                        <input type="number" class="mail_text" placeholder="Car Mileage" name="c_mileage">
+                        <input type="text" class="mail_text" placeholder="Car Transmission" name="c_transmission">
+                        <input type="number" class="mail_text" placeholder="Car Seats" name="c_seats">
+                        <input type="number" class="mail_text" placeholder="Car Luggage Space" name="c_luggage">
+                        <input type="text" class="mail_text" placeholder="Car features" name="c_features">
+                        <input type="text" class="mail_text" placeholder="Car Description" name="c_description">
+                        
+                        <input type="submit" value="Add" class="btn btn-primary"/> 
+                     
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+    
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+
+      <!-- gallery section start -->
+      <div class="gallery_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="gallery_taital">Our best offers</h1>
+               </div>
+            </div>
+             <div class="gallery_section_2">
+               <div class="row">
+                  {% for i in vehicle %}
+                  <div class="col-md-4">
+                     <div class="gallery_box">
+                       <a href="{% url 'v_details' pk=i.pk %}" class="gallery_img"><img src="{{i.c_image.url}}"></a>
+                       <a href="{% url 'v_details'  pk=i.pk %}"> <h3 class="types_text">{{i.c_name}}</h3></a>
+                          <p class="looking_text">Cost : {{i.price}} Rs/</p>
+                          <p>{{i.description}}</p>
+                       
+                        <div class="read_bt  "><a href="{% url 'v_details' pk=i.pk %}">Details</a></div>
+                     </div>
+                  </div>
+                  {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- gallery section end -->
+    
+{% endblock %}

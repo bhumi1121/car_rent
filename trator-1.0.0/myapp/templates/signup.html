@@ -1,0 +1,52 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="contact_taital">SignUp</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-15">
+                     {% if msg %}
+                        <p style="color: green;">{{msg}}</p>
+                     {% elif msg1 %}
+                        <p style="color: red;">{{msg1}}</p>
+                     {% else %}
+                        <p style="color:green;"></p>
+                     {% endif %}
+                     <div class="mail_section_1">
+                        <form action="{% url 'signup' %}" method="post">
+                           {% csrf_token %}
+                            <fieldset>
+                           <div class="form-group">
+                           <select  class='form-control' id='usertype' name='usertype'>
+                              <option>---Select User Type---</option>
+                              <option value='company_manager'>Compny Manager</option>
+                              <option value="customer">Customer</option>
+                           </select>
+                           <input type="text" class="mail_text" placeholder="Name" 
+                           name="name">
+                           <input type="email" class="mail_text" placeholder="Email" name="email">
+                           <input type="password" class="mail_text" placeholder="Password" name="pswd">
+                           <input type="password" class="mail_text" placeholder="Confirm Password" name="cpswd">
+                         <input type="submit" value="signup" class="btn btn-primary"/> 
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+     
+{% endblock %}

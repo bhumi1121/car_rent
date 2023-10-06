@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+   <!-- about section start -->
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="about_section_2">
+               <div class="row">
+                  <div class="col-md-6"> 
+                     <div class="image_iman"><img src="{{vehicle.c_image.url}}" class="about_img"></div>
+                  </div>
+                  <div class="col-md-6"> 
+                     <div class="about_taital_box">
+                        <h1 class="about_taital">Brand : {{vehicle.c_brand}}<span style="color: #fe5b29;"></span></h1>
+                        <p class="about_text">Name : {{vehicle.c_name}}</p>
+                         <p class="about_text">Model : {{vehicle.c_model}}</p>
+                         <p class="about_text">Fuel : {{vehicle.c_fuel}}</p>
+                         <p class="about_text">Price : {{vehicle.c_price}}</p>
+                         <p class="about_text">Mileage : {{vehicle.c_mileage}}</p>
+                         <p class="about_text">Transmission : {{vehicle.c_transmission}}</p>
+                         <p class="about_text">Seats : {{vehicle.c_seats}}</p>
+                         <p class="about_text">Features : {{vehicle.c_features}}</p>
+                         <p class="about_text">Description : {{vehicle.c_description}}</p>
+                        <div class="btn_main">
+                           <button id="rzp-button1">Pay with Razorpay</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about section end -->
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_eOWuboa9D8A0Jw", // Enter the Key ID generated from the Dashboard
+    "amount": "{{total}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Payment For Vehicle Rent",
+    "description": "carRent",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{vehicle.razorpay_order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+
+        window.location.href=`http://127.0.0.1:8000/gallery?razorpay_payment_id=${response.razorpay_payment_id}&razorpay_order_id=${response.razorpay_order_id}&razorpay_signature=${response.razorpay_signature}`
+
+
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+     
+{% endblock %}
